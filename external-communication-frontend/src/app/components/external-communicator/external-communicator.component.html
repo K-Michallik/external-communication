@@ -1,0 +1,8 @@
+@if (applicationNode){
+    <div class="component">
+        <ur-button (handleClick)="onButtonPress()">Get Echo</ur-button>
+        @if (echoResponse$ | async; as echo) {
+            <h3>Response from external device: {{ echo }}</h3>
+        }
+    </div>
+}

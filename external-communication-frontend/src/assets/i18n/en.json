@@ -1,0 +1,17 @@
+{
+  "program": {
+    "tree": {
+      "nodes": {
+        "urcaps-r-us-external-communication-frontend-echo-external-comms": "Echo External Comms"
+      }
+    }
+  },
+  "application": {
+    "nodes": {
+      "urcaps-r-us-external-communication-frontend-external-communicator": {
+        "title": "External Communicator",
+        "supportiveText": "External Communicator - Supportive Text"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+metadata:
+  vendorID: urcaps-r-us
+  urcapID: external-communication
+  vendorName: "URCaps R. Us"
+  urcapName: "external-communication"
+  version: 1.0.0
+artifacts:
+  webArchives:
+  - id: external-communication-frontend
+    folder: external-communication-frontend
+    devUrl: http://host.gateway.ip:4200/
+  containers:
+  - id: external-communication-backend
+    image: external-communication-backend:latest
+    exposePorts:
+      - id: explicit_messaging
+        containerPort: 50052
+        hostPort: 50052
+        protocol: tcp
+
+    ingress:
+      - id: rest-api
+        containerPort: 50052
+        protocol: http
+        proxyUrl: /

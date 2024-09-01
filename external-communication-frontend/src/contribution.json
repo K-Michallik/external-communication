@@ -1,0 +1,21 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "external-communicator.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "urcaps-r-us-external-communication-frontend-external-communicator"
+    }
+  ],
+  "programNodes": [
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/echo-external-comms.svg",
+      "behaviorURI": "echo-external-comms.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "urcaps-r-us-external-communication-frontend-echo-external-comms"
+    }
+  ],
+  "smartSkills": []
+}
