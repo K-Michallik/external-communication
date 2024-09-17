@@ -8,7 +8,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ .
 
 EXPOSE 50052
+EXPOSE 50055
 
 # ENTRYPOINT [ "/bin/bash" ]
-# ENTRYPOINT [ "tail", "-f", "/dev/null" ]
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "50052"]
+ENTRYPOINT [ "tail", "-f", "/dev/null" ]
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "50052"]

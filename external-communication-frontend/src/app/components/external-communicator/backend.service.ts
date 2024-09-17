@@ -19,11 +19,17 @@ export class BackendService {
 
     echoServer(url: string, ip: string, port: string, message:string): void {
         const fullUrl = 'http://' + url + `/connect?ip=${ip}&port=${port}&message=${encodeURIComponent(message)}`;
-        this.http.get<{ echoString: string }>(fullUrl).subscribe(response => {
-          this.echoSubject.next(response.echoString);
+        this.http.get<{ response: string }>(fullUrl).subscribe({
+          next: (serverResponse) => {
+            console.log(`Server response received: ${JSON.stringify(serverResponse)}`);
+            this.echoSubject.next(serverResponse.response);
+          },
+          error: (error) => {
+            console.error(`Error connecting to server: ${error}`);
+            this.echoSubject.next('Error connecting to server. Is the server running?');
+          }
         });
       }
-
 
 
 }

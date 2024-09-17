@@ -4,4 +4,11 @@
   .section {
     padding: 0.5rem 0.5rem 1rem;
   }
+
+  .textbox {
+    width: 200px; 
+    max-width: 100%;
+    @extend .section; 
+  }
 }
+

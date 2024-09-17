@@ -10,7 +10,8 @@ import { ExternalCommunicatorNode } from './external-communicator.node';
 // factory is required
 const createApplicationNode = (): OptionalPromise<ExternalCommunicatorNode> => ({
     type: 'urcaps-r-us-external-communication-frontend-external-communicator',    // type is required
-    version: '1.0.0'     // version is required
+    version: '1.0.0',     // version is required
+    ipAddress: 'host.docker.internal'
 });
 
 // generatePreamble is optional

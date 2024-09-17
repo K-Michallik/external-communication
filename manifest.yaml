@@ -8,16 +8,16 @@ artifacts:
   webArchives:
   - id: external-communication-frontend
     folder: external-communication-frontend
-    devUrl: http://host.gateway.ip:4200/
+    # devUrl: http://host.gateway.ip:4200/
   containers:
   - id: external-communication-backend
     image: external-communication-backend:latest
     exposePorts:
       - id: explicit_messaging
-        containerPort: 50052
-        hostPort: 50052
+        containerPort: 50055
+        hostPort: 50055
         protocol: tcp
-
+        externallyAvailable: true
     ingress:
       - id: rest-api
         containerPort: 50052

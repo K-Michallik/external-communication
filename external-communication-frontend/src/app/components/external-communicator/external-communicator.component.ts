@@ -5,6 +5,7 @@ import { ApplicationPresenterAPI, ApplicationPresenter, RobotSettings } from '@u
 import { ExternalCommunicatorNode } from './external-communicator.node';
 import { BackendService } from './backend.service';
 import { URCAP_ID, VENDOR_ID } from 'src/generated/contribution-constants';
+import { Observable } from 'rxjs';
 
 @Component({
     templateUrl: './external-communicator.component.html',
@@ -19,7 +20,9 @@ export class ExternalCommunicatorComponent implements ApplicationPresenter, OnCh
     // applicationNode is required
     @Input() applicationNode: ExternalCommunicatorNode;
     private beService: BackendService = inject(BackendService);
-    readonly echoResponse$ = this.beService.echo$;
+    readonly echoResponse$: Observable<string | null> = this.beService.echo$;
+    externalIp: string = '';
+    private readonly ipDefault: string = 'host.docker.internal';
 
     private backendHttpUrl: string;
 
@@ -54,13 +57,23 @@ export class ExternalCommunicatorComponent implements ApplicationPresenter, OnCh
                     this.cd.detectChanges();
                 });
         }
+
+        if (changes?.applicationAPI && this.applicationAPI) {
+            this.externalIp = this.applicationNode.ipAddress;
+        }
     }
 
     onButtonPress(): void {
-        const externalIp = '127.0.0.1'
-        const externalPort = '50051'
-        const externalMessage = "Hello World"
-        this.beService.echoServer(this.backendHttpUrl, externalIp, externalPort, externalMessage);
+        const ip = this.externalIp.trim() !== '' ? this.externalIp : this.ipDefault;
+        const externalPort = '50051';
+        const externalMessage = "Hello World";
+        this.beService.echoServer(this.backendHttpUrl, ip, externalPort, externalMessage);
+    }
+
+    valueChanged($event: string) {
+        this.applicationNode.ipAddress = $event;
+        console.log(`IP address changed to: ${this.applicationNode.ipAddress}`);
+        this.saveNode();
     }
 
 

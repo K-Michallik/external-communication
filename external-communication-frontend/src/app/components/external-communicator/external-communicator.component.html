@@ -1,8 +1,20 @@
 @if (applicationNode){
     <div class="component">
-        <ur-button (handleClick)="onButtonPress()">Get Echo</ur-button>
-        @if (echoResponse$ | async; as echo) {
-            <h3>Response from external device: {{ echo }}</h3>
-        }
+        <div class="textbox">
+            <ur-dialog-input
+                [type]="'text'"
+                [disabled]="false"
+                [label]="'IP Address'"
+                [value]="externalIp"
+                (valueChanged)="valueChanged($event)"
+            ></ur-dialog-input>
+        </div>
+        <div class="section">
+            <ur-button (handleClick)="onButtonPress()">Get Echo</ur-button>
+            @if (echoResponse$ | async; as echo) {
+                <h3>Response from external device: {{ echo }}</h3>
+            }
+        </div>
+
     </div>
 }
