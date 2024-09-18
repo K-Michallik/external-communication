@@ -10,7 +10,7 @@
     "nodes": {
       "urcaps-r-us-external-communication-frontend-external-communicator": {
         "title": "External Communicator",
-        "supportiveText": "External Communicator - Supportive Text"
+        "supportiveText": "Sample Communication with External Devices"
       }
     }
   }
